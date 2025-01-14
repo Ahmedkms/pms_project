@@ -1,5 +1,9 @@
 <?php require_once('inc/header.php'); 
-require_once('inc/nav.php'); ?>
+require_once('inc/nav.php'); 
+if(!isset($_SESSION['authentication'])){
+    header("location: login.php");
+}
+?>
 
 <!-- Header-->
 <header class="bg-dark py-5">

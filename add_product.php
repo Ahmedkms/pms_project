@@ -3,6 +3,9 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+if(!isset($_SESSION['authentication'])){
+    header("location: login.php");
+}
 ?>
 
 
@@ -26,10 +29,10 @@ if (session_status() === PHP_SESSION_NONE) {
             unset($_SESSION["errors"]);
             ?>
             <h3 class="text-center mb-4">Add Product</h3>
-            <div class="mb-4">
+            <!-- <div class="mb-4">
                 <label for="product id" class="form-label">Product ID</label>
                 <input type="text" class="form-control form-control-lg" id="ID" name="id">
-            </div>
+            </div> -->
             <div class="mb-4">
                 <label for="image_link" class="form-label">Image Link</label>
                 <input type="text" placeholder="Enter Image link" class="form-control form-control-lg" id="ID" name="image_link">

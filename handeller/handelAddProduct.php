@@ -14,13 +14,24 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $category = $_POST['category']?$_POST['category']:'';
     $stars = $_POST['stars']?$_POST['stars']:'';
     $price = $_POST['price']?$_POST['price']:'';
-    $id = $_POST['id']?$_POST['id']:'';
-
-
-
-    if(required($id)){
-        $error[] = "employee id is required";
+   
+    // $id = $_POST['id']?$_POST['id']:'';
+    $file = fopen("../data/products.csv",'r');
+    $data = [];
+    while($res = fgetcsv($file)){
+        $data[] = $res;
+        
     }
+    fclose($file);
+    $lastRow = end($data);
+    $id = $lastRow[0] + 1 ;
+    
+
+
+
+    // if(required($id)){
+    //     $error[] = "employee id is required";
+    // }
 
     //validation of image link
     if(required($image_link)){
@@ -53,6 +64,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     }
     else{
         $file = fopen("../data/products.csv",'a');
+
         fwrite($file, "$id,$image_link,$category,$stars,$price \n");
         redirect("../index.php");
         fclose($file);

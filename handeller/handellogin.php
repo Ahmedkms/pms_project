@@ -38,12 +38,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if($row[1]===$email && trim($row[3] ) === $hashedPassword ){
                 $tocheckIfExist = true;
                 $name = $row[0];
+                $type = $row[2];
                 break;
             }
         } 
         fclose($file);   
         if($tocheckIfExist){
-            $_SESSION['authentication'] = [$name,$email];
+            $_SESSION['authentication'] = [$name,$email,$type];
             redirect("../index.php");
         }else{
             $error[] = "invalid email or password";

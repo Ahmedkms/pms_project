@@ -3,7 +3,9 @@ require_once('inc/nav.php');
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
+if(!isset($_SESSION['authentication'])){
+    header("location: login.php");
+}
 ?>
 
 <!-- Header-->

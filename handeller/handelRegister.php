@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['errors'] = $error;
     redirect("../register.php");
    }else{
-    $_SESSION ['authentication'] = [$name,$email];
+    $_SESSION ['authentication'] = [$name,$email,$type];
     $hashedPassword = sha1($password);
     $file = fopen("../data/users.csv",'a');
     fwrite($file,"$name,$email,$type,$hashedPassword \n");
