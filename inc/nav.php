@@ -51,13 +51,13 @@ if (session_status() === PHP_SESSION_NONE) {
             }
             ?>
             <form class="d-flex" action="cart.php">
-                <?php if(isset($_SESSION['authentication'])&&$_SESSION['authentication'][2]=='user'):?>
+               
                 <button class="btn btn-outline-dark" type="submit">
                     <i class="bi-cart-fill me-10"></i>
                     Cart
                     <span class="badge bg-dark text-white ms-1 rounded-pill"><?= $countProduct ?></span>
                 </button>
-                <?php endif;?>
+             
             </form>
         </div>
     </div>

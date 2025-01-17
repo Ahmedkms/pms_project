@@ -4,6 +4,9 @@ include "../logicCode/validation.php";
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+if(!isset($_SESSION['authentication'])){
+    redirect("../login.php");
+}
 
 $error = [];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -21,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error[] = "name is required input";
     } elseif (minimumchars($name, 3)) {
         $error[] = "name must be more than 3 chars";
-    } elseif (maximumchars($name, 20)) {
+    } elseif (maximumchars($name, 50)) {
         $error[] = "name can not be more than 20 character";
     }
 
